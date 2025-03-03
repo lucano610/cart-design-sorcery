@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import ProductGrid from '../components/ProductGrid';
 import { featuredProducts } from '../data/products';
 import { Separator } from '@/components/ui/separator';
+import { ArrowRight, PackagePlus } from 'lucide-react';
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -68,22 +69,33 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Two-column Feature Section */}
+      {/* Two-column Feature Section - Replaced with dedicated call-to-action sections */}
       <section className="grid grid-cols-1 md:grid-cols-2">
-        <div className="bg-[#f1f1f1] flex items-center justify-center p-12 md:p-20">
+        <div className="bg-[#f5f5f5] flex items-center justify-center p-12 md:p-20">
           <div className="max-w-md">
-            <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-6">New Arrivals</h2>
+            <div className="flex items-center mb-4">
+              <PackagePlus className="mr-2" size={20} />
+              <h2 className="text-2xl md:text-3xl font-light tracking-wide">New Arrivals</h2>
+            </div>
             <p className="text-muted-foreground mb-8">
               Explore our latest collection featuring essential pieces designed for everyday versatility.
             </p>
-            <a href="/new-arrivals" className="inline-block px-8 py-3 bg-black text-white text-sm uppercase tracking-wider font-medium hover:bg-opacity-90 transition-colors">
-              Shop Now
-            </a>
+            <Link to="/new-arrivals" className="inline-flex items-center px-8 py-3 bg-black text-white text-sm uppercase tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+              Explore Collection
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
           </div>
         </div>
-        <div className="h-[50vh] md:h-auto bg-[#e1e1e1] flex items-center justify-center">
-          <div className="text-center text-muted-foreground">
-            Feature Image Placeholder
+        <div className="bg-[#efefef] flex items-center justify-center p-12 md:p-20">
+          <div className="max-w-md">
+            <h2 className="text-2xl md:text-3xl font-light tracking-wide mb-6">Shop Now</h2>
+            <p className="text-muted-foreground mb-8">
+              Discover our complete collection of minimalist, high-quality garments designed for your everyday wardrobe.
+            </p>
+            <Link to="/shop" className="inline-flex items-center px-8 py-3 bg-black text-white text-sm uppercase tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+              View All Products
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
           </div>
         </div>
       </section>
