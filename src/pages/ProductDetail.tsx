@@ -21,19 +21,11 @@ const ProductDetail = () => {
   const [name, setName] = useState(product?.name || '');
   const [color, setColor] = useState(product?.color || '');
   const [price, setPrice] = useState(product?.price || 0);
-  const [originalPrice, setOriginalPrice] = useState(product?.originalPrice);
   
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || !isNaN(Number(value))) {
       setPrice(value === '' ? 0 : Number(value));
-    }
-  };
-
-  const handleOriginalPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value === '' || !isNaN(Number(value))) {
-      setOriginalPrice(value === '' ? undefined : Number(value));
     }
   };
   
@@ -62,7 +54,7 @@ const ProductDetail = () => {
     }
     
     // In a real app, you would add the item to the cart
-    console.log('Added to cart:', { ...product, name, color, price, originalPrice, size: selectedSize, quantity });
+    console.log('Added to cart:', { ...product, name, color, price, size: selectedSize, quantity });
     
     toast({
       title: "Added to cart",
@@ -105,20 +97,11 @@ const ProductDetail = () => {
             />
             
             <div className="flex items-center mt-4">
-              {originalPrice !== undefined && (
-                <input
-                  type="text"
-                  value={originalPrice}
-                  onChange={handleOriginalPriceChange}
-                  className="w-20 text-lg text-muted-foreground line-through mr-3 border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
-                  placeholder="Original price"
-                />
-              )}
               <input
                 type="text"
                 value={price}
                 onChange={handlePriceChange}
-                className={`w-20 text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none ${originalPrice ? 'text-black font-medium' : ''}`}
+                className="w-20 text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
                 placeholder="Price"
               />
             </div>
