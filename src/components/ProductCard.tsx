@@ -19,12 +19,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="group">
       <Link to={`/products/${product.slug}`} className="block">
-        <div className="overflow-hidden">
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            className="product-image transition-transform duration-700 group-hover:scale-105"
-          />
+        <div className="bg-[#f1f1f1] aspect-[1/1.25] flex items-center justify-center">
+          {/* Placeholder div instead of image */}
+          <div className="text-center text-muted-foreground text-xs uppercase tracking-wider">
+            Product Image
+          </div>
         </div>
         
         <div className="mt-4 space-y-1">

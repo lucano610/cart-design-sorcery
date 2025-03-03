@@ -63,13 +63,11 @@ const ProductDetail = () => {
         </button>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Product Image */}
-          <div className="bg-[#f1f1f1]">
-            <img
-              src={product.imageUrl}
-              alt={product.name}
-              className="w-full h-auto"
-            />
+          {/* Product Image Placeholder */}
+          <div className="bg-[#f1f1f1] aspect-[1/1.25] flex items-center justify-center">
+            <div className="text-center text-muted-foreground">
+              Product Image Placeholder
+            </div>
           </div>
           
           {/* Product Details */}

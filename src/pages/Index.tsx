@@ -20,22 +20,20 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-secondary">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=2070" 
-            alt="Fashion hero" 
-            className="w-full h-full object-cover object-center"
-          />
+        <div className="absolute inset-0 bg-[#f1f1f1] flex items-center justify-center">
+          <div className="text-center text-muted-foreground">
+            Hero Image Placeholder
+          </div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
-          <div className="text-center text-white p-6">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-black p-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wider uppercase mb-4">New Season Collection</h1>
             <p className="text-lg md:text-xl font-light mb-8 max-w-xl mx-auto">Discover timeless designs with minimalist aesthetics and premium quality</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/shop-men" className="px-8 py-3 bg-white text-black uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+              <a href="/shop-men" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
                 Shop Men
               </a>
-              <a href="/shop-women" className="px-8 py-3 bg-white text-black uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+              <a href="/shop-women" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
                 Shop Women
               </a>
             </div>
@@ -73,12 +71,10 @@ const Index = () => {
             </a>
           </div>
         </div>
-        <div className="h-[50vh] md:h-auto">
-          <img 
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000" 
-            alt="New arrivals" 
-            className="w-full h-full object-cover"
-          />
+        <div className="h-[50vh] md:h-auto bg-[#e1e1e1] flex items-center justify-center">
+          <div className="text-center text-muted-foreground">
+            Feature Image Placeholder
+          </div>
         </div>
       </section>
 
