@@ -47,6 +47,51 @@ export const featuredProducts: ProductType[] = [
     price: 88,
     color: 'Light Blue',
     slug: 'slim-fit-oxford-shirt-light-blue'
+  },
+  // Adding 6 more product slots
+  {
+    id: '7',
+    name: 'Relaxed Linen Shirt',
+    price: 95,
+    color: 'Sand',
+    slug: 'relaxed-linen-shirt-sand'
+  },
+  {
+    id: '8',
+    name: 'Vintage Washed Jeans',
+    price: 120,
+    originalPrice: 145,
+    color: 'Indigo',
+    slug: 'vintage-washed-jeans-indigo'
+  },
+  {
+    id: '9',
+    name: 'Oversized Cardigan',
+    price: 110,
+    color: 'Oatmeal',
+    slug: 'oversized-cardigan-oatmeal'
+  },
+  {
+    id: '10',
+    name: 'Merino Wool Sweater',
+    price: 135,
+    color: 'Burgundy',
+    slug: 'merino-wool-sweater-burgundy'
+  },
+  {
+    id: '11',
+    name: 'Cotton Chino Pants',
+    price: 85,
+    originalPrice: 110,
+    color: 'Khaki',
+    slug: 'cotton-chino-pants-khaki'
+  },
+  {
+    id: '12',
+    name: 'Lightweight Bomber Jacket',
+    price: 175,
+    color: 'Olive',
+    slug: 'lightweight-bomber-jacket-olive'
   }
 ];
 
