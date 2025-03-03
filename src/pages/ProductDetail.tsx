@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -12,7 +11,6 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  // In a real app, you would fetch the product based on the slug
   const product = featuredProducts.find(p => p.slug === slug);
   
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -20,13 +18,10 @@ const ProductDetail = () => {
   const [description, setDescription] = useState("Premium quality, ethically sourced materials with a focus on comfort and durability. Perfect for everyday wear with a minimal design aesthetic.");
   const [name, setName] = useState(product?.name || '');
   const [color, setColor] = useState(product?.color || '');
-  const [price, setPrice] = useState(product?.price || 0);
+  const [price, setPrice] = useState(product?.price?.toString() || '0');
   
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value === '' || !isNaN(Number(value))) {
-      setPrice(value === '' ? 0 : Number(value));
-    }
+    setPrice(e.target.value);
   };
   
   if (!product) {
@@ -53,8 +48,7 @@ const ProductDetail = () => {
       return;
     }
     
-    // In a real app, you would add the item to the cart
-    console.log('Added to cart:', { ...product, name, color, price, size: selectedSize, quantity });
+    console.log('Added to cart:', { ...product, name, color, price: parseFloat(price) || 0, size: selectedSize, quantity });
     
     toast({
       title: "Added to cart",
@@ -74,14 +68,12 @@ const ProductDetail = () => {
         </button>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Product Image Placeholder */}
           <div className="bg-[#f1f1f1] aspect-[1/1.25] flex items-center justify-center">
             <div className="text-center text-muted-foreground">
               Product Image Placeholder
             </div>
           </div>
           
-          {/* Product Details */}
           <div className="pt-2">
             <input
               type="text"
@@ -101,7 +93,7 @@ const ProductDetail = () => {
                 type="text"
                 value={price}
                 onChange={handlePriceChange}
-                className="w-20 text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
+                className="w-full text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
                 placeholder="Price"
               />
             </div>
@@ -115,14 +107,12 @@ const ProductDetail = () => {
               />
             </div>
             
-            {/* Size Selector */}
             <SizeSelector 
               sizes={sizes}
               selectedSize={selectedSize}
               onSelectSize={setSelectedSize}
             />
             
-            {/* Quantity Selector */}
             <div className="mt-6">
               <h3 className="text-sm font-medium mb-3">Quantity</h3>
               <div className="flex border border-gray-300 w-28">
@@ -145,7 +135,6 @@ const ProductDetail = () => {
               </div>
             </div>
             
-            {/* Add to Cart Button */}
             <button
               className="w-full mt-8 py-4 bg-black text-white text-sm uppercase tracking-wider font-medium flex items-center justify-center hover:bg-opacity-90 transition-colors"
               onClick={handleAddToCart}
@@ -154,7 +143,6 @@ const ProductDetail = () => {
               Add to Cart
             </button>
             
-            {/* Additional Info */}
             <div className="mt-12 space-y-6">
               <div>
                 <h3 className="text-sm font-medium mb-2">Shipping</h3>

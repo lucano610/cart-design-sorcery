@@ -18,13 +18,10 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const [name, setName] = useState(product.name);
   const [color, setColor] = useState(product.color);
-  const [price, setPrice] = useState(product.price);
+  const [price, setPrice] = useState(product.price.toString());
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value === '' || !isNaN(Number(value))) {
-      setPrice(value === '' ? 0 : Number(value));
-    }
+    setPrice(e.target.value);
   };
 
   return (
@@ -56,7 +53,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             type="text"
             value={price}
             onChange={handlePriceChange}
-            className="w-20 text-sm text-center border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
+            className="w-full text-center text-sm border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
             placeholder="Price"
           />
         </div>
