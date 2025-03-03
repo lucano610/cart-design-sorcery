@@ -7,6 +7,8 @@ import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
   const [email, setEmail] = useState('');
+  const [heroTitle, setHeroTitle] = useState('New Season Collection');
+  const [heroDescription, setHeroDescription] = useState('Discover timeless designs with minimalist aesthetics and premium quality');
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,14 +29,21 @@ const Index = () => {
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-black p-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wider uppercase mb-4">New Season Collection</h1>
-            <p className="text-lg md:text-xl font-light mb-8 max-w-xl mx-auto">Discover timeless designs with minimalist aesthetics and premium quality</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/shop-men" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
-                Shop Men
-              </a>
-              <a href="/shop-women" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
-                Shop Women
+            <textarea
+              value={heroTitle}
+              onChange={(e) => setHeroTitle(e.target.value)}
+              className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wider uppercase mb-4 bg-transparent text-center border-none focus:outline-none resize-none w-full"
+              style={{ height: 'auto', overflow: 'hidden' }}
+            />
+            <textarea
+              value={heroDescription}
+              onChange={(e) => setHeroDescription(e.target.value)}
+              className="text-lg md:text-xl font-light mb-8 bg-transparent text-center border-none focus:outline-none resize-none w-full max-w-xl mx-auto"
+              style={{ height: 'auto', overflow: 'hidden' }}
+            />
+            <div className="flex justify-center">
+              <a href="/shop" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+                Shop
               </a>
             </div>
           </div>

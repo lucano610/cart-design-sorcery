@@ -22,11 +22,9 @@ const Navbar = () => {
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         
-        {/* Desktop navigation links */}
+        {/* Empty space where desktop navigation links were */}
         <div className="hidden md:flex items-center space-x-10">
-          <Link to="/men" className="header-link">Men</Link>
-          <Link to="/women" className="header-link">Women</Link>
-          <Link to="/sale" className="header-link">Sale</Link>
+          {/* Links removed as requested */}
         </div>
         
         {/* Logo */}
@@ -53,13 +51,11 @@ const Navbar = () => {
         </div>
       </nav>
       
-      {/* Mobile menu */}
+      {/* Mobile menu - also updated to remove links */}
       {isMenuOpen && (
         <div className="md:hidden absolute z-50 bg-background w-full border-b border-border animate-fade-in">
           <div className="p-6 flex flex-col space-y-6">
-            <Link to="/men" className="header-link" onClick={() => setIsMenuOpen(false)}>Men</Link>
-            <Link to="/women" className="header-link" onClick={() => setIsMenuOpen(false)}>Women</Link>
-            <Link to="/sale" className="header-link" onClick={() => setIsMenuOpen(false)}>Sale</Link>
+            {/* Mobile links removed as requested */}
           </div>
         </div>
       )}
