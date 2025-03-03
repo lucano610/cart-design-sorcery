@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import ProductGrid from '../components/ProductGrid';
 import { featuredProducts } from '../data/products';
@@ -42,9 +43,9 @@ const Index = () => {
               style={{ height: 'auto', overflow: 'hidden' }}
             />
             <div className="flex justify-center">
-              <a href="/shop" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
+              <Link to="/shop" className="px-8 py-3 bg-black text-white uppercase text-sm tracking-wider font-medium hover:bg-opacity-90 transition-colors">
                 Shop
-              </a>
+              </Link>
             </div>
           </div>
         </div>

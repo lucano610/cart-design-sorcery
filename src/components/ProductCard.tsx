@@ -21,6 +21,20 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const [price, setPrice] = useState(product.price);
   const [originalPrice, setOriginalPrice] = useState(product.originalPrice);
 
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || !isNaN(Number(value))) {
+      setPrice(value === '' ? 0 : Number(value));
+    }
+  };
+
+  const handleOriginalPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || !isNaN(Number(value))) {
+      setOriginalPrice(value === '' ? undefined : Number(value));
+    }
+  };
+
   return (
     <div className="group">
       <Link to={`/products/${product.slug}`} className="block">
@@ -48,17 +62,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex justify-center items-center space-x-2 mt-1">
           {originalPrice !== undefined && (
             <input
-              type="number"
+              type="text"
               value={originalPrice}
-              onChange={(e) => setOriginalPrice(Number(e.target.value))}
+              onChange={handleOriginalPriceChange}
               className="w-16 text-sm text-muted-foreground line-through text-center border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
               placeholder="Original price"
             />
           )}
           <input
-            type="number"
+            type="text"
             value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
+            onChange={handlePriceChange}
             className={`w-16 text-sm text-center border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none ${originalPrice ? 'text-black font-medium' : ''}`}
             placeholder="Price"
           />

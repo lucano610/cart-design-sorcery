@@ -23,6 +23,20 @@ const ProductDetail = () => {
   const [price, setPrice] = useState(product?.price || 0);
   const [originalPrice, setOriginalPrice] = useState(product?.originalPrice);
   
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || !isNaN(Number(value))) {
+      setPrice(value === '' ? 0 : Number(value));
+    }
+  };
+
+  const handleOriginalPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || !isNaN(Number(value))) {
+      setOriginalPrice(value === '' ? undefined : Number(value));
+    }
+  };
+  
   if (!product) {
     return (
       <Layout>
@@ -93,17 +107,17 @@ const ProductDetail = () => {
             <div className="flex items-center mt-4">
               {originalPrice !== undefined && (
                 <input
-                  type="number"
+                  type="text"
                   value={originalPrice}
-                  onChange={(e) => setOriginalPrice(Number(e.target.value))}
+                  onChange={handleOriginalPriceChange}
                   className="w-20 text-lg text-muted-foreground line-through mr-3 border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
                   placeholder="Original price"
                 />
               )}
               <input
-                type="number"
+                type="text"
                 value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                onChange={handlePriceChange}
                 className={`w-20 text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none ${originalPrice ? 'text-black font-medium' : ''}`}
                 placeholder="Price"
               />
