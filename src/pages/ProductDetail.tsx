@@ -17,6 +17,11 @@ const ProductDetail = () => {
   
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [description, setDescription] = useState("Premium quality, ethically sourced materials with a focus on comfort and durability. Perfect for everyday wear with a minimal design aesthetic.");
+  const [name, setName] = useState(product?.name || '');
+  const [color, setColor] = useState(product?.color || '');
+  const [price, setPrice] = useState(product?.price || 0);
+  const [originalPrice, setOriginalPrice] = useState(product?.originalPrice);
   
   if (!product) {
     return (
@@ -43,11 +48,11 @@ const ProductDetail = () => {
     }
     
     // In a real app, you would add the item to the cart
-    console.log('Added to cart:', { ...product, size: selectedSize, quantity });
+    console.log('Added to cart:', { ...product, name, color, price, originalPrice, size: selectedSize, quantity });
     
     toast({
       title: "Added to cart",
-      description: `${product.name} (${selectedSize}) added to your cart`,
+      description: `${name} (${selectedSize}) added to your cart`,
     });
   };
   
@@ -72,26 +77,45 @@ const ProductDetail = () => {
           
           {/* Product Details */}
           <div className="pt-2">
-            <h1 className="text-2xl font-light tracking-wide uppercase">{product.name}</h1>
-            <p className="text-sm uppercase tracking-wider mt-1">{product.color}</p>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full text-2xl font-light tracking-wide uppercase border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
+            />
+            <input
+              type="text"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              className="w-full text-sm uppercase tracking-wider mt-1 border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
+            />
             
             <div className="flex items-center mt-4">
-              {product.originalPrice && (
-                <span className="text-lg text-muted-foreground line-through mr-3">
-                  ${product.originalPrice.toFixed(0)}
-                </span>
+              {originalPrice !== undefined && (
+                <input
+                  type="number"
+                  value={originalPrice}
+                  onChange={(e) => setOriginalPrice(Number(e.target.value))}
+                  className="w-20 text-lg text-muted-foreground line-through mr-3 border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none"
+                  placeholder="Original price"
+                />
               )}
-              <span className={`text-lg ${product.originalPrice ? 'text-black font-medium' : ''}`}>
-                ${product.price.toFixed(0)}
-              </span>
+              <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(Number(e.target.value))}
+                className={`w-20 text-lg border-b border-transparent hover:border-gray-300 focus:border-black focus:outline-none ${originalPrice ? 'text-black font-medium' : ''}`}
+                placeholder="Price"
+              />
             </div>
             
             <div className="mt-8">
               <h3 className="text-sm font-medium mb-3">Description</h3>
-              <p className="text-muted-foreground">
-                Premium quality, ethically sourced materials with a focus on comfort and durability.
-                Perfect for everyday wear with a minimal design aesthetic.
-              </p>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="w-full p-2 border border-gray-300 focus:border-black focus:outline-none text-muted-foreground min-h-[100px]"
+              />
             </div>
             
             {/* Size Selector */}
